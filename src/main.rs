@@ -47,10 +47,11 @@ async fn main() -> anyhow::Result<()> {
     let _ = the_doc
         .set_bytes(author_id, "todo".as_bytes(), "bork")
         .await?;
-
+    let _ = the_doc.set_bytes(author_id, "todolong".as_bytes(), "bork").await?;
+    
     let _ = get_notes(&the_doc).await?;
 
-    the_doc.set_bytes(author_id, "t", "bork2").await?;
+    the_doc.set_bytes(author_id, "t".as_bytes(), "bork2").await?;
     println!("-----------------");
     let _ = get_notes(&the_doc).await?;
     Ok(())
